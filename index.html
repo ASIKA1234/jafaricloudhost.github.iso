@@ -3,206 +3,713 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jafari CloudHost - Reliable & Fast Web Hosting</title>
+    <title>SecureShield - Cybersecurity Solutions</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            padding-top: 56px;
-            background-color: #f8f9fa;
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #2c5282;
+            --accent: #0ea5e9;
+            --light: #f0f9ff;
+            --dark: #0f172a;
+            --success: #10b981;
         }
-        .hero-section {
-            background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            border-color: var(--primary);
+            color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
             color: white;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,100 0,100" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
+        }
+        
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .section {
             padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(26, 58, 108, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .card-icon i {
+            font-size: 30px;
+            color: var(--primary);
+        }
+        
+        .card-title {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stats {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 70px 0;
+        }
+        
+        .stat-item {
             text-align: center;
         }
-        .hero-section h1 {
+        
+        .stat-number {
+            font-size: 3rem;
             font-weight: 700;
+            margin-bottom: 10px;
         }
-        .domain-search-bar {
-            max-width: 600px;
-            margin: 30px auto 0;
-            background: white;
-            padding: 10px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        
+        .stat-text {
+            font-size: 1.1rem;
+            font-weight: 500;
         }
-        .domain-search-bar input {
-            border: none;
-            box-shadow: none;
+        
+        .about {
+            background-color: var(--light);
         }
-        .price-card {
-            transition: all 0.3s ease-in-out;
-            border: 1px solid #e9ecef;
+        
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        .price-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        .highlighted-plan {
-            border: 3px solid #007bff;
-            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
-        }
-        .section-padding {
+        
+        .cta {
+            background: linear-gradient(135deg, var(--accent) 0%, #0284c7 100%);
+            color: white;
             padding: 80px 0;
         }
-        .feature-icon {
-            font-size: 2rem;
-            color: #007bff;
-            margin-bottom: 15px;
+        
+        .cta h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
         }
+        
+        .contact-form .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 20px;
+        }
+        
         footer {
-            background-color: #343a40;
+            background-color: var(--dark);
             color: white;
-            padding: 40px 0;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-heading {
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(26, 58, 108, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .feature-icon i {
+            font-size: 24px;
+            color: var(--primary);
         }
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Jafari CloudHost</a>
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-shield-check me-2"></i>SecureShield
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#plans">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="btn btn-primary btn-sm ms-lg-3" href="login.html">Login</a></li>
                 </ul>
+                <div class="ms-lg-3 mt-3 mt-lg-0">
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="hero-section">
+    <section id="home" class="hero">
         <div class="container">
-            <h1 class="display-3">Host Your Website. Launch Your Success.</h1>
-            <p class="lead fs-4">Fast, secure, and reliable hosting for small businesses and developers.</p>
-            
-            <form id="domainSearchForm" class="domain-search-bar d-flex">
-                <input type="text" id="domainInput" class="form-control form-control-lg me-2" placeholder="Search for your perfect domain name..." required>
-                <button type="submit" class="btn btn-primary btn-lg">Search</button>
-            </form>
-            <small class="text-white-50 mt-2 d-block">Starting at $9.99/year for .com domains.</small>
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
+                    <h1>Enterprise Cybersecurity Solutions</h1>
+                    <p class="lead">Protecting your digital assets with cutting-edge security technologies and expert-driven strategies. We offer comprehensive security solutions for organizations of all sizes.</p>
+                    <div class="mt-4">
+                        <a href="#services" class="btn btn-light btn-lg me-3">Our Services</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <div class="bg-white rounded-3 p-4 shadow-lg" style="transform: rotate(3deg);">
+                            <div class="bg-light rounded-2 p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="feature-icon">
+                                        <i class="bi bi-shield-lock"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Penetration Testing</h5>
+                                        <p class="text-muted mb-0">Identify vulnerabilities before attackers do</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="feature-icon">
+                                        <i class="bi bi-file-earmark-bar-graph"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Security Audits</h5>
+                                        <p class="text-muted mb-0">Comprehensive system assessments</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="feature-icon">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Security Training</h5>
+                                        <p class="text-muted mb-0">Empower your team with knowledge</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="plans" class="section-padding">
+    <section class="stats">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Simple, Transparent Pricing</h2>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <div class="stat-number">250+</div>
+                        <div class="stat-text">Clients Secured</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-text">Threat Detection Rate</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-text">Vulnerabilities Fixed</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-text">Security Monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=500&q=80" alt="Security Team" class="img-fluid rounded-3 about-img">
+                        <div class="position-absolute bottom-0 start-0 bg-white p-3 rounded-3 shadow ms-4 mb-4" style="transform: translateY(30px);">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="bi bi-award text-primary fs-1"></i>
+                                </div>
+                                <div>
+                                    <h4 class="mb-0">Industry Recognition</h4>
+                                    <p class="mb-0 text-muted">Top 10 Security Firm 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-title text-start mb-4">
+                        <h2>About Our Company</h2>
+                    </div>
+                    <h3 class="mb-4">Leading the Future of Cybersecurity</h3>
+                    <p class="lead mb-4">SecureShield was founded in 2010 with a mission to protect organizations from evolving cyber threats. Our team of certified security experts brings decades of combined experience in penetration testing, incident response, and security architecture.</p>
+                    <p>With a client base spanning financial institutions, healthcare providers, and government agencies, we understand the unique security challenges each sector faces. Our proactive approach combines cutting-edge technology with human expertise to build resilient security postures.</p>
+                    <div class="mt-5">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="feature-icon bg-white me-3">
+                                <i class="bi bi-check-circle text-success"></i>
+                            </div>
+                            <h5 class="mb-0">Certified Security Professionals</h5>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="feature-icon bg-white me-3">
+                                <i class="bi bi-check-circle text-success"></i>
+                            </div>
+                            <h5 class="mb-0">24/7 Security Monitoring</h5>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="feature-icon bg-white me-3">
+                                <i class="bi bi-check-circle text-success"></i>
+                            </div>
+                            <h5 class="mb-0">Compliance Expertise</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p class="text-muted mt-3">Comprehensive security solutions tailored to your organization's needs</p>
+            </div>
             <div class="row g-4">
-                
-                <div class="col-md-4">
-                    <div class="card price-card text-center h-100">
-                        <div class="card-body p-4">
-                            <h4 class="card-title text-muted">Starter Plan</h4>
-                            <h1 class="display-4 fw-bold my-3">$2.99<span class="fs-5 fw-normal text-muted">/mo</span></h1>
-                            <ul class="list-unstyled mb-4 text-start">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>1 Website</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>10GB SSD Storage</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Free SSL Certificate</li>
-                                <li class="mb-2 text-muted"><i class="bi bi-x-circle-fill text-danger me-2"></i>No Free Domain</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-primary btn-lg w-100">Get Started</a>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4 text-center h-100">
+                        <div class="card-icon">
+                            <i class="bi bi-shield-exclamation"></i>
                         </div>
+                        <h4 class="card-title mb-3">Penetration Testing</h4>
+                        <p class="card-text">Simulated cyber attacks to identify vulnerabilities in your systems, networks, and applications before real attackers exploit them.</p>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card price-card highlighted-plan text-center h-100">
-                        <div class="card-header bg-primary text-white fw-bold">RECOMMENDED</div>
-                        <div class="card-body p-4">
-                            <h4 class="card-title">Business Plan</h4>
-                            <h1 class="display-3 fw-bold my-3">$7.99<span class="fs-5 fw-normal text-muted">/mo</span></h1>
-                            <ul class="list-unstyled mb-4 text-start">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>**Unlimited** Websites</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>**100GB** SSD Storage</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Free SSL Certificate</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>**Free Domain** for 1st Year</li>
-                            </ul>
-                            <a href="#" class="btn btn-primary btn-lg w-100">Choose Plan</a>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4 text-center h-100">
+                        <div class="card-icon">
+                            <i class="bi bi-shield-lock"></i>
                         </div>
+                        <h4 class="card-title mb-3">Vulnerability Assessment</h4>
+                        <p class="card-text">Comprehensive analysis of your IT infrastructure to identify security weaknesses and prioritize remediation efforts.</p>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card price-card text-center h-100">
-                        <div class="card-body p-4">
-                            <h4 class="card-title text-muted">Pro Plan</h4>
-                            <h1 class="display-4 fw-bold my-3">$14.99<span class="fs-5 fw-normal text-muted">/mo</span></h1>
-                            <ul class="list-unstyled mb-4 text-start">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Unlimited Websites</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>**Unmetered** Storage</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Free SSL + **Dedicated IP**</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Free Domain for 1st Year</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-primary btn-lg w-100">Get Started</a>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4 text-center h-100">
+                        <div class="card-icon">
+                            <i class="bi bi-file-earmark-bar-graph"></i>
                         </div>
+                        <h4 class="card-title mb-3">Security Audits</h4>
+                        <p class="card-text">Independent evaluation of your security policies, procedures, and technical controls to ensure compliance and effectiveness.</p>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
                     </div>
                 </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="section-padding bg-white">
-        <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Hosting Features You Need</h2>
-            <div class="row text-center">
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-cloud-arrow-up feature-icon"></i>
-                    <h4>99.9% Uptime</h4>
-                    <p class="text-muted">Guaranteed stability with redundant server architecture.</p>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4 text-center h-100">
+                        <div class="card-icon">
+                            <i class="bi bi-lightning"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Incident Response</h4>
+                        <p class="card-text">Rapid response to security breaches with containment, investigation, and recovery services to minimize damage.</p>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-speedometer2 feature-icon"></i>
-                    <h4>SSD Speed</h4>
-                    <p class="text-muted">Lightning-fast performance powered by NVMe SSDs.</p>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4 text-center h-100">
+                        <div class="card-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Security Training</h4>
+                        <p class="card-text">Customized education programs to raise security awareness and build cybersecurity skills among your employees.</p>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-shield-lock feature-icon"></i>
-                    <h4>Advanced Security</h4>
-                    <p class="text-muted">Free SSL, DDoS protection, and daily malware scans.</p>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-headset feature-icon"></i>
-                    <h4>24/7 Support</h4>
-                    <p class="text-muted">Expert technical support available around the clock via chat or ticket.</p>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-4 text-center h-100">
+                        <div class="card-icon">
+                            <i class="bi bi-gear"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Managed Security</h4>
+                        <p class="card-text">24/7 monitoring and management of your security infrastructure with our expert team as your extended security team.</p>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding">
+    <section id="solutions" class="section bg-light">
         <div class="container">
-            <h2 class="text-center mb-5 fw-bold">Have Questions? Get in Touch!</h2>
+            <div class="section-title">
+                <h2>Industry Solutions</h2>
+                <p class="text-muted mt-3">Tailored security approaches for specific sectors</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card p-4 h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="feature-icon me-3">
+                                <i class="bi bi-bank"></i>
+                            </div>
+                            <h3 class="mb-0">Financial Services</h3>
+                        </div>
+                        <p>Protect sensitive financial data with advanced threat detection, fraud prevention, and regulatory compliance solutions tailored for banks, credit unions, and fintech companies.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> PCI DSS Compliance</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Anti-Fraud Systems</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Real-time Transaction Monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card p-4 h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="feature-icon me-3">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <h3 class="mb-0">Healthcare</h3>
+                        </div>
+                        <p>Safeguard patient data and medical records with HIPAA-compliant security solutions designed for hospitals, clinics, and healthcare providers.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> HIPAA Compliance</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Medical Device Security</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Ransomware Protection</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card p-4 h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="feature-icon me-3">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <h3 class="mb-0">Government</h3>
+                        </div>
+                        <p>Secure critical infrastructure and classified information with solutions that meet stringent government security standards and compliance requirements.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> FISMA Compliance</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Critical Infrastructure Protection</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Secure Communication Systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="p-4 border rounded bg-white">
-                        <form action="https://formsubmit.co/your-email@example.com" method="POST">
-                            <input type="hidden" name="_subject" value="New Inquiry from CloudHost Website">
-                            <input type="text" name="_gotcha" style="display:none">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Ready to Secure Your Organization?</h2>
+                    <p class="lead mb-5">Contact us today for a free security assessment and discover how we can protect your business from evolving cyber threats.</p>
+                    <a href="#contact" class="btn btn-light btn-lg">Schedule Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            <div class="mb-3">
-                                <label for="contactName" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="contactName" name="Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="contactEmail" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="contactEmail" name="Email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="contactMessage" class="form-label">Message</label>
-                                <textarea class="form-control" id="contactMessage" name="Message" rows="4" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg w-100">Send Inquiry</button>
-                        </form>
+    <section id="team" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Leadership Team</h2>
+                <p class="text-muted mt-3">Experienced professionals dedicated to your security</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" class="rounded-circle mx-auto mb-4" width="150" height="150" alt="Team Member">
+                        <h5 class="mb-1">Michael Chen</h5>
+                        <p class="text-muted mb-3">Chief Security Officer</p>
+                        <p>Certified Information Systems Security Professional with 15+ years in enterprise security architecture.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" class="rounded-circle mx-auto mb-4" width="150" height="150" alt="Team Member">
+                        <h5 class="mb-1">Sarah Johnson</h5>
+                        <p class="text-muted mb-3">Director of Penetration Testing</p>
+                        <p>Offensive security expert with OSCP and GPEN certifications. Leads our red team operations.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" class="rounded-circle mx-auto mb-4" width="150" height="150" alt="Team Member">
+                        <h5 class="mb-1">David Rodriguez</h5>
+                        <p class="text-muted mb-3">Head of Incident Response</p>
+                        <p>Specializes in digital forensics and rapid incident containment. Holds CISSP and GIAC certifications.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" class="rounded-circle mx-auto mb-4" width="150" height="150" alt="Team Member">
+                        <h5 class="mb-1">Emily Wang</h5>
+                        <p class="text-muted mb-3">Security Awareness Lead</p>
+                        <p>Focuses on developing human-centric security training programs and phishing simulation exercises.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p class="text-muted mt-3">Get in touch to start securing your digital future</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h3 class="mb-4">Send Us a Message</h3>
+                    <form class="contact-form">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                        <input type="text" class="form-control" placeholder="Subject" required>
+                        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Our Office</h3>
+                    <div class="d-flex mb-4">
+                        <i class="bi bi-geo-alt-fill text-primary fs-3 me-3"></i>
+                        <div>
+                            <h5 class="mb-1">Address</h5>
+                            <p class="mb-0 text-muted">123 Secure Lane, Cyber City, CA 90210</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <i class="bi bi-envelope-fill text-primary fs-3 me-3"></i>
+                        <div>
+                            <h5 class="mb-1">Email</h5>
+                            <p class="mb-0 text-muted">info@secureshield.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <i class="bi bi-telephone-fill text-primary fs-3 me-3"></i>
+                        <div>
+                            <h5 class="mb-1">Phone</h5>
+                            <p class="mb-0 text-muted">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <h3 class="mb-3 mt-5">Connect With Us</h3>
+                    <div>
+                        <a href="#" class="social-icon bg-primary me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon bg-primary me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon bg-primary me-2"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
             </div>
@@ -210,42 +717,64 @@
     </section>
 
     <footer>
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 CloudHost. All rights reserved. | <a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h5 class="footer-heading">SecureShield</h5>
+                    <p class="text-white-50">Leading the defense against tomorrow's cyber threats. Your trusted partner for complete enterprise security.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About Us</a>
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#solutions" class="footer-link">Solutions</a>
+                    <a href="#team" class="footer-link">Our Team</a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h5 class="footer-heading">Services</h5>
+                    <a href="#services" class="footer-link">Penetration Testing</a>
+                    <a href="#services" class="footer-link">Vulnerability Assessment</a>
+                    <a href="#services" class="footer-link">Incident Response</a>
+                    <a href="#services" class="footer-link">Security Audits</a>
+                    <a href="#services" class="footer-link">Managed Security</a>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="footer-heading">Get In Touch</h5>
+                    <p class="text-white-50"><i class="bi bi-geo-alt me-2"></i> 123 Secure Lane, Cyber City</p>
+                    <p class="text-white-50"><i class="bi bi-envelope me-2"></i> asikajafari@gmail.com</p>
+                    <p class="text-white-50"><i class="bi bi-telephone me-2"></i> +256-776-288-420</p>
+                    <div class="input-group mt-4">
+                        <input type="email" class="form-control" placeholder="Newsletter Email" aria-label="Newsletter Email">
+                        <button class="btn btn-primary" type="button"><i class="bi bi-send-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0 text-white-50">&copy; 2025 SecureShield. All Rights Reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i> by Jafari</p>
+            </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('domainSearchForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Stop the default form submission
-            const domain = document.getElementById('domainInput').value.trim();
-
-            if (domain) {
-                // Simple simulation logic
-                const reservedDomains = ["cloudhost.com", "mybusiness.org", "premium.net"];
-                const domainLower = domain.toLowerCase();
-
-                let message;
-                let isAvailable = true;
-
-                for (const reserved of reservedDomains) {
-                    if (domainLower.includes(reserved)) {
-                        isAvailable = false;
-                        break;
-                    }
-                }
-
-                if (isAvailable) {
-                    message = `🎉 Success! The domain **${domain}** is available! You can register it now.`;
+        // JavaScript for Navbar scroll effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
                 } else {
-                    message = `❌ Sorry, the domain **${domain}** is taken. Try a different name or extension!`;
+                    navbar.classList.remove('scrolled');
                 }
-
-                // Use the built-in alert for simplicity
-                alert(message);
-            }
+            });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
